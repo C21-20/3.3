@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Перевірка цілочисельності числа</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('background.jpg'); /* Додайте URL свого фонового зображення */
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: rgba(255, 255, 255, 0.8); /* Прозорий фон контейнера */
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            margin: 10px 0;
+        }
+        p#result {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function checkInteger(number) {
+            if (Number.isInteger(number)) {
+                return "ціле число";
+            } else {
+                return "число не ціле";
+            }
+        }
+
+        function testCheckInteger() {
+            let userInput = document.getElementById("userInput").value;
+            let resultDisplay = document.getElementById("result");
+            let number = parseFloat(userInput);
+
+            if (!isNaN(number)) {
+                let message = checkInteger(number);
+                resultDisplay.textContent = "Число " + userInput + " - " + message;
+            } else {
+                resultDisplay.textContent = "Будь ласка, введіть коректне число";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Перевірка цілочисельності числа</h1>
+        <p>Введіть число:</p>
+        <input type="text" id="userInput" placeholder="Число">
+        <button onclick="testCheckInteger()">Перевірити</button>
+        <p id="result"></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Обчислення площі кола</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center; /* Центрує текст у блоці body */
+            margin-top: 50px; /* Відступ від верхнього краю */
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto; /* Центрує блок .container відносно батьківського елемента */
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 80%;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p#result {
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+          function calculateCircleArea(radius) {
+            let area = Math.PI * Math.pow(radius, 2);
+            let roundedArea = Math.round(area * 100) / 100;
+            return roundedArea;
+        }
+
+        function calculateAndDisplay() {
+            let radiusInput = document.getElementById("radius");
+            let radius = parseFloat(radiusInput.value);
+            let resultDisplay = document.getElementById("result");
+
+            if (!isNaN(radius)) {
+                let circleArea = calculateCircleArea(radius);
+                resultDisplay.textContent = "Площа кола з радіусом " + radius + " дорівнює " + circleArea;
+            } else {
+                resultDisplay.textContent = "Будь ласка, введіть числове значення радіуса";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Площа кола</h1>
+        <p>Введіть радіус кола:</p>
+        <input type="text" id="radius" placeholder="Радіус">
+        <br>
+        <button onclick="calculateAndDisplay()">Обчислити</button>
+        <p id="result"></p>
+    </div>
+</body>
+</html>

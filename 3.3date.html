@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Виведення поточної дати та часу</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('background.jpg'); /* Додайте URL свого фонового зображення */
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Забезпечує повне використання висоти вікна браузера */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: rgba(255, 255, 255, 0.8); /* Прозорий фон контейнера */
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            margin: 10px 0;
+        }
+        p#currentDateTime1,
+        p#currentDateTime2 {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function displayCurrentDate() {
+            let currentDate = new Date();
+            let day = currentDate.getDate().toString().padStart(2, '0');
+            let month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+            let year = currentDate.getFullYear().toString().slice(-2);
+            let hours = currentDate.getHours().toString().padStart(2, '0');
+            let minutes = currentDate.getMinutes().toString().padStart(2, '0');
+            let ampm = hours >= 12 ? 'pm' : 'am';
+
+            let formattedDate1 = `${day}.${month}.${year}. ${hours}:${minutes}`;
+            let formattedDate2 = `${month}.${day}.${year}. ${hours}:${minutes} ${ampm}`;
+
+            console.log("Поточна дата і час 1:", formattedDate1);
+            console.log("Поточна дата і час 2:", formattedDate2);
+
+            let dateTimeDisplay1 = document.getElementById("currentDateTime1");
+            let dateTimeDisplay2 = document.getElementById("currentDateTime2");
+
+            dateTimeDisplay1.textContent = "date and time: " + formattedDate1;
+            dateTimeDisplay2.textContent = "am/pm: " + formattedDate2;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Виведення поточної дати та часу</h1>
+        <button onclick="displayCurrentDate()">Показати поточну дату і час</button>
+        <p id="currentDateTime1"></p>
+        <p id="currentDateTime2"></p>
+    </div>
+</body>
+</html>
